@@ -2,6 +2,7 @@ package scripts.daeyalt;
 
 import org.tribot.api.General;
 import org.tribot.api.Timing;
+import org.tribot.api.util.abc.ABCProperties;
 import org.tribot.api.util.abc.ABCUtil;
 import org.tribot.api2007.*;
 import org.tribot.api2007.types.RSObject;
@@ -64,8 +65,6 @@ public class DaeyaltPlugin extends Script implements Painting, Starting {
                 }
             }
 
-            AbcUtils.performAllTimedActions(abcUtil);
-
             if (shouldActivateSpecialAttack()) {
                 SpecUtils.clickSpecOrb();
             }
@@ -78,16 +77,27 @@ public class DaeyaltPlugin extends Script implements Painting, Starting {
                 continue;
             }
 
-            // Wait a little while to prevent double clicks.
-            General.sleep(1500, 2500);
+            AbcUtils.performAllTimedActions(abcUtil);
 
-            // Wait until the player has stopped animating, or if the rock has moved from its starting position.
-            Timing.waitCondition(() -> Player.getAnimation() == -1 || !rock.getPosition().equals(rockStart),
+            final ABCProperties abcProperties = abcUtil.getProperties();
+            abcProperties.setWaitingTime(60_000);
+            abcProperties.setUnderAttack(false);
+            abcProperties.setWaitingFixed(true);
+            abcUtil.generateTrackers();
+
+            // Wait until the player has stopped moving and stopped animating, or if the rock has moved from its
+            // starting position.
+            Timing.waitCondition(() -> !Player.isMoving()
+                            && (Player.getAnimation() == -1 || !rock.getPosition().equals(rockStart)),
                     60_000);
 
-            // Why not use abcUtil.generateReactionTime? Because the essence moves every 60 seconds, and also because
-            // the last interaction was so long ago it causes the reaction times to be really long (>25 seconds).
-            General.sleep(General.randomSD(2500, 1000));
+            try {
+                // Why not use abcUtil.generateReactionTime? Because the essence moves every 60 seconds, and also because
+                // the last interaction was so long ago it causes the reaction times to be really long (>25 seconds).
+                abcUtil.sleep(General.randomSD(2500, 1000));
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
