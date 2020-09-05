@@ -20,17 +20,30 @@ public class AbcUtils {
             abcUtil.checkXP();
         }
 
+        if (abcUtil.shouldExamineEntity()) {
+            abcUtil.examineEntity();
+        }
+
+        if (abcUtil.shouldLeaveGame()) {
+            abcUtil.leaveGame();
+        }
+
         if (abcUtil.shouldMoveMouse()) {
             abcUtil.moveMouse();
+        }
+
+        if (abcUtil.shouldPickupMouse()) {
+            abcUtil.pickupMouse();
+        }
+
+        if (abcUtil.shouldRightClick()) {
+            abcUtil.rightClick();
         }
 
         if (abcUtil.shouldRotateCamera()) {
             abcUtil.rotateCamera();
         }
 
-        if (abcUtil.shouldLeaveGame()) {
-            abcUtil.leaveGame();
-        }
     }
 
     private AbcUtils() {
