@@ -6,7 +6,7 @@
 
     <groupId>com.github.tztokmatt</groupId>
     <artifactId>daeyalt</artifactId>
-    <version>0.2.0-SNAPSHOT</version>
+    <version>0.2.0</version>
 
     <name>Daeyalt</name>
     <description>TRiBot script for mining daeyalt essence</description>
