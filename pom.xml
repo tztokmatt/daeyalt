@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.github.tztokmatt</groupId>
+    <artifactId>daeyalt</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+
+    <name>Daeyalt</name>
+    <description>TRiBot script for mining daeyalt essence</description>
+    <url>https://github.com/tztokmatt/daeyalt</url>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <licenses>
+        <license>
+            <name>Unlicense</name>
+            <url>https://unlicense.org</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>tztokmatt</id>
+            <name>TzTok-Matt</name>
+            <email>tztokmatt@fastmail.com</email>
+        </developer>
+    </developers>
+
+    <repositories>
+        <repository>
+            <id>gitlab-maven</id>
+            <url>https://gitlab.com/api/v4/projects/20741387/packages/maven</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.tribot</groupId>
+            <artifactId>TRiBot</artifactId>
+            <version>11.2.0</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+</project>
