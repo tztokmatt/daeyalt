@@ -16,7 +16,7 @@ import scripts.daeyalt.util.SpecUtils;
 
 import java.awt.*;
 
-@ScriptManifest(name = "Daeyalt", version = 0.2, category = "Mining", authors = {"TzTok-Matt"})
+@ScriptManifest(name = "Daeyalt", version = 0.3, category = "Mining", authors = {"TzTok-Matt"})
 public class DaeyaltPlugin extends Script implements Painting, Starting {
     private static final double HOUR = 3600000.D;
     private static final int ID_DAEYALT_ACTIVE_OBJECT = 39095;
