@@ -65,8 +65,18 @@ public class DaeyaltPlugin extends Script implements Painting, Starting {
                 SpecUtils.clickSpecOrb();
             }
 
-            rock.click("Mine");
+            if (!rock.click("Mine")) {
+                // Try raising the camera angle. Sometimes a shallow camera angle causes the rock to be clipped away
+                // and therefore unclickable.
+                Camera.setCameraAngle(General.random(80, 100));
+                General.sleep(1000, 3000);
+                continue;
+            }
 
+            // Wait a little while to prevent double clicks.
+            General.sleep(1500, 2500);
+
+            // Wait until the player has stopped animating, or if the rock has moved from its starting position.
             Timing.waitCondition(() -> Player.getAnimation() == -1 || !rock.getPosition().equals(rockStart),
                     60_000);
 
